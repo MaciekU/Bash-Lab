@@ -1,0 +1,21 @@
+#!/bin/bash
+#Utwórz plik z nazwami katalogów. Napisz skrypt, który będzie przyjmował w wywołaniu linii poleceń nazwę tego pliku oraz wartość liczbową i tworzył katalogi o nazwach z pliku oraz dla każdego katalogu podkatalogi w liczbie określonej przez wartość liczbową o nazwie losowej.
+
+file="./folderki"
+if [ -f "$file" ]
+then
+    echo "Plik już istnieje"
+else
+    echo -e "Kat1\nKat2\nKat3\nKat4" >> folderki 
+fi
+
+while read name; 
+do
+	mkdir "$name"
+	cd "$name"
+	for (( i = 0 ; i < $2 ; i++ ))
+	do
+		mktemp -d XXXXX
+	done
+	cd ..
+done <"$1"

@@ -1,0 +1,16 @@
+#!/bin/bash
+#Korzystając z mechanizmu here document napisz skrypt, który będzie przyjmował wartość liczbową i adre email w linii poleceń a następnie wysyłał wiadomosc emaila (Vagrant pozwala wysyłać wiadomości tylko z konta root) pod wskazany adres wraz dowolnym komentarzem tekstowym podaną wartością i wszystkimi wartościami zmiennych środowiskowych.
+
+
+var1=$(printenv)
+var2="Wiadomość tekstowa"
+#$1
+
+echo -e "$1 $var2 $var1" | sudo sendmail $2
+
+#sudo cat /var/log/mail.log #logi co mail porabia
+#sudo traceroute -T -p 25 -m 50 alt4.gmail-smtp-in.l.google.com 25 #co się dzieje z pakietami?
+#nc alt4.gmail-smtp-in.l.google.com 25 #ISP blokuje mnie na 25 porcie
+
+
+

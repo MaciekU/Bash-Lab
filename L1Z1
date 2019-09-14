@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#Napisz skrypt, który sprawdzi bieżącą datę i godzinę i jeśli wypada ona w czasie zajęć laboratoryjnych wyświetli napis "Witaj na zajęciach". W polecenie date z formatowanie
+#zmiana czasu sudo date --set="3 OCT 2018 11:22:00"
+
+dzien=$(date +"%u")
+godzina=$(date +"%k%M")
+if (( "$dzien" == "3" && "$godzina" > "1705" && "$godzina" < "1845" ))
+then
+    echo "Witaj na zajęciach"
+else
+    echo "Nie ma zajęć"
+fi
+

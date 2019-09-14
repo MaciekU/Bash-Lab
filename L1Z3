@@ -1,0 +1,21 @@
+#!/bin/bash
+
+#Utwórz plik z min 6 tekstami powitalnymi i zapisz je do pliku (każde powitanie w osobnej linii). Napisz skrypt, który będzie wyświetlał losowe powitanie z pliku (zrób 2 wersje, jedna z wykorzystaniem: head, tail, bc, expr, druga: shuf)
+
+file="./powitania"
+if [ -f "$file" ]
+then
+    echo "Plik już istnieje"
+else
+    echo -e "Hello\nWitaj\nDzień Dobry\nGuten Morgen\nWykryto użytkownika\nUruchomiono skrypt witający" >> powitania 
+fi
+#flaga e umożliwia zastosowanie \n ale nie jest pewna dla wszystkich wersji i dystrybucji 
+
+
+#linia=$(((RANDOM%6)  + 1 )) #random 1-6 //generowane z użyciem PID i sekund od 1970
+var1="$(sort -R powitania | head -n 1)"
+var2="$(sort -R powitania | tail -n 1)"
+
+echo "Head: $var1 Tail: $var2 "
+ 
+echo "Shuf: $(shuf -n 1 powitania)"
